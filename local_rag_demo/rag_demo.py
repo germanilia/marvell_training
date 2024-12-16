@@ -89,7 +89,7 @@ def split_text_into_chunks(text: str, chunk_size: int = 1024, overlap: int = 100
 
     return chunks
 
-def create_embeddings_from_pdf(pdf_path: str | Path, collection_name: str, chunk_size: int = 512, overlap: int = 50) -> None:
+def create_embeddings_from_pdf(pdf_path: str | Path, collection_name: str, chunk_size: int = 1024, overlap: int = 50) -> None:
     """
     Create embeddings from PDF chunks and store them in ChromaDB collection.
     Each page is processed separately, and chunks maintain their page association.
@@ -239,6 +239,9 @@ Question: {query}
 Answer:"""
 
     # Generate response using Ollama
+    print("----------------------------------------")
+    print(prompt)
+    print("----------------------------------------")
     response = ollama.generate(
         model=ANSWER_MODEL,
         prompt=prompt
